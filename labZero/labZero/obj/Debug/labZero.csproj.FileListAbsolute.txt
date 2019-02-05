@@ -1,0 +1,6 @@
+C:\Users\Ace\Documents\GitHub\labZero\labZero\bin\Debug\labZero.exe.config
+C:\Users\Ace\Documents\GitHub\labZero\labZero\bin\Debug\labZero.exe
+C:\Users\Ace\Documents\GitHub\labZero\labZero\bin\Debug\labZero.pdb
+C:\Users\Ace\Documents\GitHub\labZero\labZero\obj\Debug\labZero.csprojResolveAssemblyReference.cache
+C:\Users\Ace\Documents\GitHub\labZero\labZero\obj\Debug\labZero.exe
+C:\Users\Ace\Documents\GitHub\labZero\labZero\obj\Debug\labZero.pdb
