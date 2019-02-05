@@ -4,3 +4,7 @@ C:\Users\Ace\Documents\GitHub\labZero\labZero\bin\Debug\labZero.pdb
 C:\Users\Ace\Documents\GitHub\labZero\labZero\obj\Debug\labZero.csprojResolveAssemblyReference.cache
 C:\Users\Ace\Documents\GitHub\labZero\labZero\obj\Debug\labZero.exe
 C:\Users\Ace\Documents\GitHub\labZero\labZero\obj\Debug\labZero.pdb
+C:\Users\Ace\Documents\GitHub\labZero\labZero\bin\Debug\EntityFramework.dll
+C:\Users\Ace\Documents\GitHub\labZero\labZero\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Ace\Documents\GitHub\labZero\labZero\bin\Debug\EntityFramework.xml
+C:\Users\Ace\Documents\GitHub\labZero\labZero\bin\Debug\EntityFramework.SqlServer.xml
