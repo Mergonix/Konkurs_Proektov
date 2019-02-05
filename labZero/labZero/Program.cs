@@ -12,6 +12,8 @@ namespace labZero
         {
             Console.WriteLine("Hello, world!");
             Console.ReadLine();
+            Console.WriteLine("Your next lab will be 1");
+            Console.ReadLine();
         }
     }
 }
