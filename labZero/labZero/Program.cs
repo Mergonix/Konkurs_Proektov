@@ -10,7 +10,7 @@ namespace labZero
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, world!");
+            Console.WriteLine("Hello, world! fhgfhgfhgf");
             Console.ReadLine();
             Console.WriteLine("Your next lab will be 1");
             Console.ReadLine();
