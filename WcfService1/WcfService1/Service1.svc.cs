@@ -21,8 +21,8 @@ namespace WcfService1
             public int ID_Competition;
             public string Name;
             public string Description;
-            public float Prize;
-            public float MinValue;
+            public double Prize;
+            public double MinValue;
             public DateTime ApplicationDeadline;
         }
         public class Evalulation
@@ -30,7 +30,7 @@ namespace WcfService1
             public int Request_ID;
             public int Expert_ID;
             public string Name;
-            public float EvalulationNum;
+            public double EvalulationNum;
         }
         public class Experts
         {
@@ -237,7 +237,7 @@ namespace WcfService1
             }
             public void AddEvalulation(Evalulation Evalulation)
             {
-                string sqlExpression = "AddEvalulation";
+                string sqlExpression = "AddEvaluation";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -252,25 +252,28 @@ namespace WcfService1
                         ParameterName = "@Request_ID",
                         Value = Evalulation.Request_ID
                     };
+
+                    command.Parameters.Add(EvalulationRequestParamet);
                     SqlParameter EvalulationExpertParamet = new SqlParameter
                     {
                         ParameterName = "@Expert_ID",
                         Value = Evalulation.Expert_ID
                     };
+
+                    command.Parameters.Add(EvalulationExpertParamet);
                     SqlParameter EvalulationNameParamet = new SqlParameter
                     {
                         ParameterName = "@Name",
                         Value = Evalulation.Name
                     };
+
+                    command.Parameters.Add(EvalulationNameParamet);
                     SqlParameter EvalulationEvalulationNumParamet = new SqlParameter
                     {
                         ParameterName = "@EvalulationNum",
                         Value = Evalulation.EvalulationNum
                     };
-                    command.Parameters.Add(EvalulationRequestParamet);
 
-                    command.Parameters.Add(EvalulationExpertParamet);
-                    command.Parameters.Add(EvalulationNameParamet);
                     command.Parameters.Add(EvalulationEvalulationNumParamet);
 
                     var result = command.ExecuteScalar();
@@ -418,8 +421,8 @@ namespace WcfService1
                             ID_Competition = reader.GetInt32(0),
                             Name  = reader.GetString(1),
                             Description = reader.GetString(2),
-                            Prize = reader.GetFloat(3),
-                            MinValue = reader.GetFloat(4),
+                            Prize = reader.GetDouble(3),
+                            MinValue = reader.GetDouble(4),
                             ApplicationDeadline = reader.GetDateTime(5)
                         };
                         summarizing.Add(cli);
@@ -456,7 +459,7 @@ namespace WcfService1
                             Request_ID = reader.GetInt32(0),
                             Expert_ID = reader.GetInt32(1),
                             Name = reader.GetString(2),
-                            EvalulationNum = reader.GetFloat(3),
+                            EvalulationNum = reader.GetDouble(3),
                         };
                         summarizing.Add(cli);
                     }
@@ -720,10 +723,8 @@ namespace WcfService1
                         competition.ID_Competition = id;
                         competition.Name = reader.GetString(0);
                         competition.Description = reader.GetString(1);
-                        competition.Prize = reader.GetFloat(2);
-
-                        competition.MinValue = reader.GetFloat(3);
-
+                        competition.Prize = reader.GetDouble(2);
+                        competition.MinValue = reader.GetDouble(3);
                         competition.ApplicationDeadline = reader.GetDateTime(4);
 
                     }
@@ -879,7 +880,7 @@ namespace WcfService1
         }
         public void UpdateExperts(Experts experts)
         {
-            string sqlExpression = "UpdateExperts";
+            string sqlExpression = "UpdateExpert";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

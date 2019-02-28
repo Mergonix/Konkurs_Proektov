@@ -4,3 +4,9 @@ c:\users\shumi\documents\visual studio 2013\Projects\WcfService1\WcfService1\bin
 c:\users\shumi\documents\visual studio 2013\Projects\WcfService1\WcfService1\obj\Debug\WcfService1.dll
 c:\users\shumi\documents\visual studio 2013\Projects\WcfService1\WcfService1\obj\Debug\WcfService1.pdb
 C:\Users\Shumi\Documents\Visual Studio 2013\Projects\WcfService1\WcfService1\obj\Debug\WcfService1.csprojResolveAssemblyReference.cache
+C:\Users\Shumi\Desktop\Учеба\KonkursProektov\Konkurs_Proektov\WcfService1\WcfService1\bin\WcfService1.dll.config
+C:\Users\Shumi\Desktop\Учеба\KonkursProektov\Konkurs_Proektov\WcfService1\WcfService1\bin\WcfService1.dll
+C:\Users\Shumi\Desktop\Учеба\KonkursProektov\Konkurs_Proektov\WcfService1\WcfService1\bin\WcfService1.pdb
+C:\Users\Shumi\Desktop\Учеба\KonkursProektov\Konkurs_Proektov\WcfService1\WcfService1\obj\Debug\WcfService1.csprojResolveAssemblyReference.cache
+C:\Users\Shumi\Desktop\Учеба\KonkursProektov\Konkurs_Proektov\WcfService1\WcfService1\obj\Debug\WcfService1.dll
+C:\Users\Shumi\Desktop\Учеба\KonkursProektov\Konkurs_Proektov\WcfService1\WcfService1\obj\Debug\WcfService1.pdb
