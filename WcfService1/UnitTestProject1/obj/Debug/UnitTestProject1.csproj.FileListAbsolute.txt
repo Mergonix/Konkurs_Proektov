@@ -1,0 +1,7 @@
+C:\Users\Shumi\Desktop\Учеба\KonkursProektov\Konkurs_Proektov\WcfService1\UnitTestProject1\bin\Debug\UnitTestProject1.dll
+C:\Users\Shumi\Desktop\Учеба\KonkursProektov\Konkurs_Proektov\WcfService1\UnitTestProject1\bin\Debug\UnitTestProject1.pdb
+C:\Users\Shumi\Desktop\Учеба\KonkursProektov\Konkurs_Proektov\WcfService1\UnitTestProject1\bin\Debug\WcfService1.dll
+C:\Users\Shumi\Desktop\Учеба\KonkursProektov\Konkurs_Proektov\WcfService1\UnitTestProject1\bin\Debug\WcfService1.pdb
+C:\Users\Shumi\Desktop\Учеба\KonkursProektov\Konkurs_Proektov\WcfService1\UnitTestProject1\obj\Debug\UnitTestProject1.csprojResolveAssemblyReference.cache
+C:\Users\Shumi\Desktop\Учеба\KonkursProektov\Konkurs_Proektov\WcfService1\UnitTestProject1\obj\Debug\UnitTestProject1.dll
+C:\Users\Shumi\Desktop\Учеба\KonkursProektov\Konkurs_Proektov\WcfService1\UnitTestProject1\obj\Debug\UnitTestProject1.pdb

@@ -163,76 +163,106 @@ namespace WcfService1
 
                 }
             }
+        
             public void AddCompetition(Competition competition)
             {
                 string sqlExpression = "AddCompetition";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
+                    
                     connection.Open();
-                    SqlCommand command = new SqlCommand(sqlExpression, connection)
+                    SqlCommand command1 = new SqlCommand("Select count(*) From Competition where Name=@Name", connection);
+                    command1.Parameters.AddWithValue("@Name", competition.Name);
+                    int Name_Exp = (int)command1.ExecuteScalar();
+                    if (Name_Exp == 0)
                     {
-                        CommandType = System.Data.CommandType.StoredProcedure
-                    };
+                        MoreThanNull = false;
+                        SqlCommand command = new SqlCommand(sqlExpression, connection)
+                        {
+                            CommandType = System.Data.CommandType.StoredProcedure
+                        };
 
-                    SqlParameter CompetitionNameParamet = new SqlParameter
-                    {
-                        ParameterName = "@Name",
-                        Value = competition.Name
-                    };
-                    SqlParameter CompetitionDescParamet = new SqlParameter
-                    {
-                        ParameterName = "@Description",
-                        Value = competition.Description
-                    };
-                    SqlParameter CompetitionPrizeParamet = new SqlParameter
-                    {
-                        ParameterName = "@Prize",
-                        Value = competition.Prize
-                    };
-                    SqlParameter CompetitionMinValueParamet = new SqlParameter
-                    {
-                        ParameterName = "@MinValue",
-                        Value = competition.MinValue
-                    };
-                    SqlParameter CompetitionApplicationDeadlineParamet = new SqlParameter
-                    {
-                        ParameterName = "@ApplicationDeadline",
-                        Value = competition.ApplicationDeadline
-                    };
-                    command.Parameters.Add(CompetitionNameParamet);
+                        SqlParameter CompetitionNameParamet = new SqlParameter
+                        {
+                            ParameterName = "@Name",
+                            Value = competition.Name
+                        };
+                        SqlParameter CompetitionDescParamet = new SqlParameter
+                        {
+                            ParameterName = "@Description",
+                            Value = competition.Description
+                        };
+                        SqlParameter CompetitionPrizeParamet = new SqlParameter
+                        {
+                            ParameterName = "@Prize",
+                            Value = competition.Prize
+                        };
+                        SqlParameter CompetitionMinValueParamet = new SqlParameter
+                        {
+                            ParameterName = "@MinValue",
+                            Value = competition.MinValue
+                        };
+                        SqlParameter CompetitionApplicationDeadlineParamet = new SqlParameter
+                        {
+                            ParameterName = "@ApplicationDeadline",
+                            Value = competition.ApplicationDeadline
+                        };
+                        command.Parameters.Add(CompetitionNameParamet);
 
-                    command.Parameters.Add(CompetitionDescParamet);
-                    command.Parameters.Add(CompetitionPrizeParamet);
-                    command.Parameters.Add(CompetitionMinValueParamet);
-                    command.Parameters.Add(CompetitionApplicationDeadlineParamet);
+                        command.Parameters.Add(CompetitionDescParamet);
+                        command.Parameters.Add(CompetitionPrizeParamet);
+                        command.Parameters.Add(CompetitionMinValueParamet);
+                        command.Parameters.Add(CompetitionApplicationDeadlineParamet);
 
-                    var result = command.ExecuteScalar();
-                    connection.Close();
+                        var result = command.ExecuteScalar();
+                        connection.Close();
+                    }
+                    else
+                    {
+                        MoreThanNull = true;
+                        connection.Close();
+                    }
                 }
             }
+
+            public bool MoreThanNull = false;
             public void AddExpert(Experts Expert)
             {
                 string sqlExpression = "AddExpert";
-
+                
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
+
                     connection.Open();
-                    SqlCommand command = new SqlCommand(sqlExpression, connection)
+                    SqlCommand command1 = new SqlCommand("Select count(*) From Experts where FIO=@FIO", connection);
+                    command1.Parameters.AddWithValue("FIO", Expert.FIO);
+                    int FIO_EXP = (int)command1.ExecuteScalar();
+                    if (FIO_EXP == 0)
                     {
-                        CommandType = System.Data.CommandType.StoredProcedure
-                    };
+                        MoreThanNull = false;
+                        SqlCommand command = new SqlCommand(sqlExpression, connection)
+                        {
+                            CommandType = System.Data.CommandType.StoredProcedure
+                        };
 
-                    SqlParameter ExpertFIOParamet = new SqlParameter
+                        SqlParameter ExpertFIOParamet = new SqlParameter
+                        {
+                            ParameterName = "@FIO",
+                            Value = Expert.FIO
+                        };
+
+                        command.Parameters.Add(ExpertFIOParamet);
+
+                        var result = command.ExecuteScalar();
+
+                        connection.Close();
+                    }
+                    else
                     {
-                        ParameterName = "@FIO",
-                        Value = Expert.FIO
-                    };
-
-                    command.Parameters.Add(ExpertFIOParamet);
-
-                    var result = command.ExecuteScalar();
-                    connection.Close();
+                        MoreThanNull = true;
+                        connection.Close();
+                    }
                 }
             }
             public void AddEvalulation(Evalulation Evalulation)
@@ -287,27 +317,39 @@ namespace WcfService1
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    SqlCommand command = new SqlCommand(sqlExpression, connection)
+                    SqlCommand command1 = new SqlCommand("Select count(*) From Request where ProjectName=@ProjectName", connection);
+                    command1.Parameters.AddWithValue("@ProjectName", Request.ProjectName);
+                    int Req_Exp = (int)command1.ExecuteScalar();
+                    if (Req_Exp == 0)
                     {
-                        CommandType = System.Data.CommandType.StoredProcedure
-                    };
+                        MoreThanNull = false;
+                        SqlCommand command = new SqlCommand(sqlExpression, connection)
+                        {
+                            CommandType = System.Data.CommandType.StoredProcedure
+                        };
 
-                    SqlParameter RequestExpertParamet = new SqlParameter
+                        SqlParameter RequestExpertParamet = new SqlParameter
+                        {
+                            ParameterName = "@ProjectName",
+                            Value = Request.ProjectName
+                        };
+                        SqlParameter RequestNameParamet = new SqlParameter
+                        {
+                            ParameterName = "@Competition",
+                            Value = Request.Competition_ID
+                        };
+
+                        command.Parameters.Add(RequestExpertParamet);
+                        command.Parameters.Add(RequestNameParamet);
+
+                        var result = command.ExecuteScalar();
+                        connection.Close();
+                    }
+                    else
                     {
-                        ParameterName = "@ProjectName",
-                        Value = Request.ProjectName
-                    };
-                    SqlParameter RequestNameParamet = new SqlParameter
-                    {
-                        ParameterName = "@Competition",
-                        Value = Request.Competition_ID
-                    };
-
-                    command.Parameters.Add(RequestExpertParamet);
-                    command.Parameters.Add(RequestNameParamet);
-
-                    var result = command.ExecuteScalar();
-                    connection.Close();
+                        MoreThanNull = true;
+                        connection.Close();
+                    }
                 }
             }
         public void AddUsers(Users Users)
@@ -740,6 +782,7 @@ namespace WcfService1
         public Experts FindByIdExperts(int id)
         {
             string sqlFindByID = "FindByIdExperts";
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
