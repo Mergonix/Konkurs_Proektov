@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:21452/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:21452/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:21452/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfService1" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_Authorisation_InputMessage">
+    <wsdl:part name="parameters" element="tns:Authorisation" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Authorisation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AuthorisationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddCompetition_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCompetition" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddCompetition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCompetitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddExpert_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddExpert" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddExpert_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddExpertResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddEvalulation_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddEvalulation" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddEvalulation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddEvalulationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddRequest" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUsers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddUsersRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUsersRequest" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddUsersRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUsersRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SelectCompetition_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectCompetition" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SelectCompetition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectCompetitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SelectEvalulation_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectEvalulation" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SelectEvalulation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectEvalulationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SelectExperts_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectExperts" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SelectExperts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectExpertsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SelectRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectRequest" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SelectRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SelectUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectUsers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SelectUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SelectUsersRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectUsersRequest" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SelectUsersRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectUsersRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_FindByIDUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindByIDUsers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_FindByIDUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindByIDUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_FindByIdRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindByIdRequest" />
+  </wsdl:message>
+  <wsdl:message name="IService1_FindByIdRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindByIdRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_FindByIdCompetition_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindByIdCompetition" />
+  </wsdl:message>
+  <wsdl:message name="IService1_FindByIdCompetition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindByIdCompetitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_FindByIdExperts_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindByIdExperts" />
+  </wsdl:message>
+  <wsdl:message name="IService1_FindByIdExperts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindByIdExpertsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUsers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRequest" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateExperts_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateExperts" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateExperts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateExpertsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateEvaluation_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEvaluation" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateEvaluation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEvaluationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateCompetition_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCompetition" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateCompetition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCompetitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteCompetition_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCompetition" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteCompetition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCompetitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteEvaluation_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEvaluation" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteEvaluation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEvaluationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteExpert_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteExpert" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteExpert_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteExpertResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRequest" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteUR_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUR" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteUR_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteURResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="Authorisation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Authorisation" message="tns:IService1_Authorisation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AuthorisationResponse" message="tns:IService1_Authorisation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCompetition">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddCompetition" message="tns:IService1_AddCompetition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddCompetitionResponse" message="tns:IService1_AddCompetition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddExpert">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddExpert" message="tns:IService1_AddExpert_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddExpertResponse" message="tns:IService1_AddExpert_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddEvalulation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddEvalulation" message="tns:IService1_AddEvalulation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddEvalulationResponse" message="tns:IService1_AddEvalulation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddRequest" message="tns:IService1_AddRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddRequestResponse" message="tns:IService1_AddRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddUsers" message="tns:IService1_AddUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddUsersResponse" message="tns:IService1_AddUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUsersRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddUsersRequest" message="tns:IService1_AddUsersRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddUsersRequestResponse" message="tns:IService1_AddUsersRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectCompetition">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SelectCompetition" message="tns:IService1_SelectCompetition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SelectCompetitionResponse" message="tns:IService1_SelectCompetition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectEvalulation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SelectEvalulation" message="tns:IService1_SelectEvalulation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SelectEvalulationResponse" message="tns:IService1_SelectEvalulation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectExperts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SelectExperts" message="tns:IService1_SelectExperts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SelectExpertsResponse" message="tns:IService1_SelectExperts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SelectRequest" message="tns:IService1_SelectRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SelectRequestResponse" message="tns:IService1_SelectRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SelectUsers" message="tns:IService1_SelectUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SelectUsersResponse" message="tns:IService1_SelectUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectUsersRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SelectUsersRequest" message="tns:IService1_SelectUsersRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SelectUsersRequestResponse" message="tns:IService1_SelectUsersRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindByIDUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/FindByIDUsers" message="tns:IService1_FindByIDUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/FindByIDUsersResponse" message="tns:IService1_FindByIDUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindByIdRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/FindByIdRequest" message="tns:IService1_FindByIdRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/FindByIdRequestResponse" message="tns:IService1_FindByIdRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindByIdCompetition">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/FindByIdCompetition" message="tns:IService1_FindByIdCompetition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/FindByIdCompetitionResponse" message="tns:IService1_FindByIdCompetition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindByIdExperts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/FindByIdExperts" message="tns:IService1_FindByIdExperts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/FindByIdExpertsResponse" message="tns:IService1_FindByIdExperts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateUsers" message="tns:IService1_UpdateUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateUsersResponse" message="tns:IService1_UpdateUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateRequest" message="tns:IService1_UpdateRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateRequestResponse" message="tns:IService1_UpdateRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateExperts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateExperts" message="tns:IService1_UpdateExperts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateExpertsResponse" message="tns:IService1_UpdateExperts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEvaluation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateEvaluation" message="tns:IService1_UpdateEvaluation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateEvaluationResponse" message="tns:IService1_UpdateEvaluation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCompetition">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateCompetition" message="tns:IService1_UpdateCompetition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateCompetitionResponse" message="tns:IService1_UpdateCompetition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCompetition">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteCompetition" message="tns:IService1_DeleteCompetition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteCompetitionResponse" message="tns:IService1_DeleteCompetition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEvaluation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteEvaluation" message="tns:IService1_DeleteEvaluation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteEvaluationResponse" message="tns:IService1_DeleteEvaluation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteExpert">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteExpert" message="tns:IService1_DeleteExpert_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteExpertResponse" message="tns:IService1_DeleteExpert_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteRequest" message="tns:IService1_DeleteRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteRequestResponse" message="tns:IService1_DeleteRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteUser" message="tns:IService1_DeleteUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteUserResponse" message="tns:IService1_DeleteUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUR">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteUR" message="tns:IService1_DeleteUR_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteURResponse" message="tns:IService1_DeleteUR_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Authorisation">
+      <soap:operation soapAction="http://tempuri.org/IService1/Authorisation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCompetition">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddCompetition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddExpert">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddExpert" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddEvalulation">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddEvalulation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRequest">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUsers">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUsersRequest">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddUsersRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectCompetition">
+      <soap:operation soapAction="http://tempuri.org/IService1/SelectCompetition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectEvalulation">
+      <soap:operation soapAction="http://tempuri.org/IService1/SelectEvalulation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectExperts">
+      <soap:operation soapAction="http://tempuri.org/IService1/SelectExperts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectRequest">
+      <soap:operation soapAction="http://tempuri.org/IService1/SelectRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectUsers">
+      <soap:operation soapAction="http://tempuri.org/IService1/SelectUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectUsersRequest">
+      <soap:operation soapAction="http://tempuri.org/IService1/SelectUsersRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindByIDUsers">
+      <soap:operation soapAction="http://tempuri.org/IService1/FindByIDUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindByIdRequest">
+      <soap:operation soapAction="http://tempuri.org/IService1/FindByIdRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindByIdCompetition">
+      <soap:operation soapAction="http://tempuri.org/IService1/FindByIdCompetition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindByIdExperts">
+      <soap:operation soapAction="http://tempuri.org/IService1/FindByIdExperts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUsers">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRequest">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateExperts">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateExperts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEvaluation">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateEvaluation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCompetition">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateCompetition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCompetition">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteCompetition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEvaluation">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteEvaluation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteExpert">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteExpert" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRequest">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUR">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteUR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://localhost:21452/Service1.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
