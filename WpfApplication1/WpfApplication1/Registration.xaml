@@ -1,7 +1,7 @@
 ﻿<Window x:Class="WpfApplication1.Registration"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Registration" Height="426.792" Width="500.377">
+        Title="Registration" Height="426.792" Width="500.377" Background="#FF14152B" WindowStartupLocation="CenterScreen">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="131,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF3BA0E8" FontFamily="Calibri" FontSize="24" Width="231" TextAlignment="Center" Text="Регистрация"/>
         <Label Content="Логин" HorizontalAlignment="Left" Margin="75,75,0,0" VerticalAlignment="Top" Background="#FF3BA0E8" Foreground="White" FontFamily="Calibri" Width="121" HorizontalContentAlignment="Center"/>

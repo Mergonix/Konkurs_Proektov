@@ -55,6 +55,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddExpert.xaml.cs">
+      <DependentUpon>AddExpert.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CreateCompetition.xaml.cs">
+      <DependentUpon>CreateCompetition.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CreateEvaluation.xaml.cs">
+      <DependentUpon>CreateEvaluation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Experts.xaml.cs">
+      <DependentUpon>Experts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Users.xaml.cs">
+      <DependentUpon>Users.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MenuAdmin.xaml.cs">
       <DependentUpon>MenuAdmin.xaml</DependentUpon>
     </Compile>
@@ -64,12 +79,35 @@
     <Compile Include="Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Request.xaml.cs">
+      <DependentUpon>Request.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Page Include="AddExpert.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="authorization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateCompetition.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateEvaluation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Experts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Users.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -97,6 +135,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Registration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Request.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

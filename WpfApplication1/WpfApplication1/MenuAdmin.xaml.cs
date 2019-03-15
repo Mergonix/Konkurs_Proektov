@@ -23,5 +23,40 @@ namespace WpfApplication1
         {
             InitializeComponent();
         }
+
+        private void CreateComp_Click(object sender, RoutedEventArgs e)
+        {
+            CreateCompetition comp = new CreateCompetition();
+            comp.Show();
+            this.Close();
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow Window = new MainWindow();
+            Window.Show();
+            this.Close();
+        }
+
+        private void Users_Click(object sender, RoutedEventArgs e)
+        {
+            Clients user = new Clients();
+            user.Show();
+            this.Close();
+        }
+
+        private void Experts_Click(object sender, RoutedEventArgs e)
+        {
+            Experts exp = new Experts();
+            exp.Show();
+            this.Close();
+        }
+
+        private void CreateEvaluation_Click(object sender, RoutedEventArgs e)
+        {
+            CreateEvaluation ev = new CreateEvaluation();
+            ev.Show();
+            this.Close();
+        }
     }
 }

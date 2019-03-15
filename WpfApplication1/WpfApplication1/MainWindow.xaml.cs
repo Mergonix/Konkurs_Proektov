@@ -38,5 +38,6 @@ namespace WpfApplication1
             reg.Show();
             this.Close();
         }
+
     }
 }

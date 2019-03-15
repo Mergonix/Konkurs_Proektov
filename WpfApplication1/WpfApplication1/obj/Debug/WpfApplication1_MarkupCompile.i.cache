@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Shumi\Documents\Visual Studio 2013\Projects\WpfApplication1\WpfApplication1\App.xaml
-5-1262057189
+11-1668040146
 
-14-562957071
+20-1105266339
 14-105585256
-authorization.xaml;MainWindow.xaml;MenuAdmin.xaml;MenuClient.xaml;Registration.xaml;
+AddExpert.xaml;authorization.xaml;CreateCompetition.xaml;CreateEvaluation.xaml;Experts.xaml;Users.xaml;MainWindow.xaml;MenuAdmin.xaml;MenuClient.xaml;Registration.xaml;Request.xaml;
 
 False
 

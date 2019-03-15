@@ -19,3 +19,15 @@ c:\users\shumi\documents\visual studio 2013\Projects\WpfApplication1\WpfApplicat
 c:\users\shumi\documents\visual studio 2013\Projects\WpfApplication1\WpfApplication1\obj\Debug\MenuClient.g.cs
 c:\users\shumi\documents\visual studio 2013\Projects\WpfApplication1\WpfApplication1\obj\Debug\Registration.baml
 c:\users\shumi\documents\visual studio 2013\Projects\WpfApplication1\WpfApplication1\obj\Debug\Registration.g.cs
+C:\Users\Shumi\Documents\Visual Studio 2013\Projects\WpfApplication1\WpfApplication1\obj\Debug\Request.baml
+C:\Users\Shumi\Documents\Visual Studio 2013\Projects\WpfApplication1\WpfApplication1\obj\Debug\Request.g.cs
+C:\Users\Shumi\Documents\Visual Studio 2013\Projects\WpfApplication1\WpfApplication1\obj\Debug\Users.baml
+C:\Users\Shumi\Documents\Visual Studio 2013\Projects\WpfApplication1\WpfApplication1\obj\Debug\Users.g.cs
+C:\Users\Shumi\Documents\Visual Studio 2013\Projects\WpfApplication1\WpfApplication1\obj\Debug\Experts.baml
+C:\Users\Shumi\Documents\Visual Studio 2013\Projects\WpfApplication1\WpfApplication1\obj\Debug\Experts.g.cs
+C:\Users\Shumi\Documents\Visual Studio 2013\Projects\WpfApplication1\WpfApplication1\obj\Debug\AddExpert.baml
+C:\Users\Shumi\Documents\Visual Studio 2013\Projects\WpfApplication1\WpfApplication1\obj\Debug\AddExpert.g.cs
+C:\Users\Shumi\Documents\Visual Studio 2013\Projects\WpfApplication1\WpfApplication1\obj\Debug\CreateCompetition.baml
+C:\Users\Shumi\Documents\Visual Studio 2013\Projects\WpfApplication1\WpfApplication1\obj\Debug\CreateCompetition.g.cs
+C:\Users\Shumi\Documents\Visual Studio 2013\Projects\WpfApplication1\WpfApplication1\obj\Debug\CreateEvaluation.baml
+C:\Users\Shumi\Documents\Visual Studio 2013\Projects\WpfApplication1\WpfApplication1\obj\Debug\CreateEvaluation.g.cs
