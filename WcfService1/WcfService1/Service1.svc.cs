@@ -443,380 +443,90 @@ namespace WcfService1
         }
         public List<Competition> SelectCompetition()
         {
-            string sqlExpression = "SelectCompetition";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (KonkursProektovEntities db = new KonkursProektovEntities())
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection)
-                {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
-
-                var reader = command.ExecuteReader();
-
-                List<Competition> summarizing = new List<Competition>();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        Competition cli = new Competition
-                        {
-                            ID_Competition = reader.GetInt32(0),
-                            Name  = reader.GetString(1),
-                            Description = reader.GetString(2),
-                            Prize = reader.GetDouble(3),
-                            MinValue = reader.GetDouble(4),
-                            ApplicationDeadline = reader.GetDateTime(5)
-                        };
-                        summarizing.Add(cli);
-                    }
-                    return summarizing;
-                }
-                else
-                {
-                    return null;
-                }
-
+                List<Competition> competition = db.Competition.ToList();
+                return competition;
             }
         }
         public List<Evalulation> SelectEvalulation()
         {
-            string sqlExpression = "SelectEvalulation";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (KonkursProektovEntities db = new KonkursProektovEntities())
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection)
-                {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
-
-                var reader = command.ExecuteReader();
-
-                List<Evalulation> summarizing = new List<Evalulation>();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        Evalulation cli = new Evalulation
-                        {
-                            Request_ID = reader.GetInt32(0),
-                            Expert_ID = reader.GetInt32(1),
-                            Name = reader.GetString(2),
-                            EvalulationNum = reader.GetDouble(3),
-                        };
-                        summarizing.Add(cli);
-                    }
-                    return summarizing;
-                }
-                else
-                {
-                    return null;
-                }
-
+                List<Evalulation> evaluation = db.Evalulation.ToList();
+                return evaluation;
             }
         }
         public List<Experts> SelectExperts()
         {
-            string sqlExpression = "SelectExpert";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (KonkursProektovEntities db = new KonkursProektovEntities())
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection)
-                {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
-
-                var reader = command.ExecuteReader();
-
-                List<Experts> summarizing = new List<Experts>();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        Experts cli = new Experts
-                        {
-                            ID_Experts = reader.GetInt32(0),
-                            FIO = reader.GetString(1)
-                        };
-                        summarizing.Add(cli);
-                    }
-                    return summarizing;
-                }
-                else
-                {
-                    return null;
-                }
-
+                List<Experts> experts = db.Experts.ToList();
+                return experts;
             }
         }
         public List<Request> SelectRequest()
         {
-            string sqlExpression = "SelectRequest";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (KonkursProektovEntities db = new KonkursProektovEntities())
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection)
-                {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
-
-                var reader = command.ExecuteReader();
-
-                List<Request> summarizing = new List<Request>();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        Request cli = new Request
-                        {
-                            ID_Request = reader.GetInt32(0),
-                            ProjectName = reader.GetString(1),
-                            Competition_ID = reader.GetInt32(2)
-                        };
-                        summarizing.Add(cli);
-                    }
-                    return summarizing;
-                }
-                else
-                {
-                    return null;
-                }
-
+                List<Request> request = db.Request.ToList();
+                return request;
             }
         }
         public List<Users> SelectUsers()
         {
-            string sqlExpression = "SelectUsers";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (KonkursProektovEntities db = new KonkursProektovEntities())
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection)
-                {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
-
-                var reader = command.ExecuteReader();
-
-                List<Users> summarizing = new List<Users>();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        Users cli = new Users
-                        {
-                            ID_Users = reader.GetInt32(0),
-                            Login = reader.GetString(1),
-                            Password = reader.GetString(2),
-                            FIO = reader.GetString(3),
-                            Phone = reader.GetString(4),
-                            Email = reader.GetString(5),
-                            Admin = reader.GetBoolean(6)
-                        };
-                        summarizing.Add(cli);
-                    }
-                    return summarizing;
-                }
-                else
-                {
-                    return null;
-                }
-
+                List<Users> users = db.Users.ToList();
+                return users;
             }
         }
         public List<Users_Request> SelectUsersRequest()
         {
-            string sqlExpression = "SelectUsersRequest";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (KonkursProektovEntities db = new KonkursProektovEntities())
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection)
-                {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
-
-                var reader = command.ExecuteReader();
-
-                List<Users_Request> summarizing = new List<Users_Request>();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        Users_Request cli = new Users_Request
-                        {
-                            Request_ID = reader.GetInt32(0),
-                            Users_ID = reader.GetInt32(1),
-                            TeamName = reader.GetString(2)
-                        };
-                        summarizing.Add(cli);
-                    }
-                    return summarizing;
-                }
-                else
-                {
-                    return null;
-                }
-
+                List<Users_Request> UR = db.Users_Request.ToList();
+                return UR;
             }
         }
         public Users FindByIDUsers(int id)
         {
-            string sqlFindByID = "FindByIDUsers";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (KonkursProektovEntities db = new KonkursProektovEntities())
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlFindByID, connection)
-                {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
-
-                SqlParameter Param = new SqlParameter
-                {
-                    ParameterName = "@id1",
-                    Value = id
-                };
-                command.Parameters.Add(Param);
-
-                var reader = command.ExecuteReader();
-
-                Users user = new Users();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        user.ID_Users = id;
-                        user.Login = reader.GetString(0);
-                        user.Password = reader.GetString(1);
-                        user.FIO = reader.GetString(2);
-                        user.Email = reader.GetString(3);
-                        user.Phone = reader.GetString(4);
-                        user.Admin = reader.GetBoolean(5);
-                    }
-                    return user;
-                }
-                else
-                {
-                    return null;
-                }
-
+                Users users = db.Users
+                            .Where(o => o.ID_Users == id)
+                            .FirstOrDefault();
+                return users;
             }
         }
         public Request FindByIdRequest(int id)
         {
-            string sqlFindByID = "FindByIdRequest";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (KonkursProektovEntities db = new KonkursProektovEntities())
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlFindByID, connection)
-                {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
-
-                SqlParameter Param = new SqlParameter
-                {
-                    ParameterName = "@id1",
-                    Value = id
-                };
-                command.Parameters.Add(Param);
-
-                var reader = command.ExecuteReader();
-
-                Request request = new Request();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        request.ID_Request = id;
-                        request.ProjectName = reader.GetString(0);
-                        request.Competition_ID = reader.GetInt32(1);
-                    }
-                    return request;
-                }
-                else
-                {
-                    return null;
-                }
-
+                Request Request = db.Request
+                            .Where(o => o.ID_Request == id)
+                            .FirstOrDefault();
+                return Request;
             }
         }
         public Competition FindByIdCompetition(int id)
         {
-            string sqlFindByID = "FindByIdCompetition";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (KonkursProektovEntities db = new KonkursProektovEntities())
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlFindByID, connection)
-                {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
-
-                SqlParameter Param = new SqlParameter
-                {
-                    ParameterName = "@id1",
-                    Value = id
-                };
-                command.Parameters.Add(Param);
-
-                var reader = command.ExecuteReader();
-
-                Competition competition = new Competition();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        competition.ID_Competition = id;
-                        competition.Name = reader.GetString(0);
-                        competition.Description = reader.GetString(1);
-                        competition.Prize = reader.GetDouble(2);
-                        competition.MinValue = reader.GetDouble(3);
-                        competition.ApplicationDeadline = reader.GetDateTime(4);
-
-                    }
-                    return competition;
-                }
-                else
-                {
-                    return null;
-                }
-
+                Competition competition = db.Competition
+                            .Where(o => o.ID_Competition == id)
+                            .FirstOrDefault();
+                return competition;
             }
         }
         public Experts FindByIdExperts(int id)
         {
-            string sqlFindByID = "FindByIdExperts";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (KonkursProektovEntities db = new KonkursProektovEntities())
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlFindByID, connection)
-                {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
-
-                SqlParameter Param = new SqlParameter
-                {
-                    ParameterName = "@id1",
-                    Value = id
-                };
-                command.Parameters.Add(Param);
-
-                var reader = command.ExecuteReader();
-
-                Experts experts = new Experts();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        experts.ID_Experts = id;
-                        experts.FIO = reader.GetString(0);
-
-                    }
-                    return experts;
-                }
-                else
-                {
-                    return null;
-                }
-
+                Experts experts = db.Experts
+                            .Where(o => o.ID_Experts == id)
+                            .FirstOrDefault();
+                return experts;
             }
         }
         public void UpdateUsers(Users user)

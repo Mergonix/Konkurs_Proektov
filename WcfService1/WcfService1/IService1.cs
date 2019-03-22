@@ -16,51 +16,51 @@ namespace WcfService1
         [OperationContract]
         WcfService1.Service1.Auth Authorisation(string Login, string Password);
         [OperationContract]
-        void  AddCompetition(WcfService1.Service1.Competition competition);
+        Competition AddCompetition(Competition competition);
         [OperationContract]
-        void AddExpert(WcfService1.Service1.Experts Expert);
+        Experts AddExpert(Experts Expert);
         [OperationContract]
-        void AddEvalulation(WcfService1.Service1.Evalulation Evalulation);
+        Evalulation AddEvalulation(Evalulation Evalulation);
         [OperationContract]
-        void AddRequest(WcfService1.Service1.Request Request);
+        Request AddRequest(Request Request);
+        //[OperationContract]
+        //void AddUsers(WcfService1.Service1.Users Users);
         [OperationContract]
-        void AddUsers(WcfService1.Service1.Users Users);
+        Users_Request AddUsersRequest(Users_Request Users_Request);
         [OperationContract]
-        void AddUsersRequest(WcfService1.Service1.Users_Request Users_Request);
+        List<Competition> SelectCompetition();
         [OperationContract]
-        List<WcfService1.Service1.Competition> SelectCompetition();
+        List<Evalulation> SelectEvalulation();
         [OperationContract]
-        List<WcfService1.Service1.Evalulation> SelectEvalulation();
+        List<Experts> SelectExperts();
         [OperationContract]
-        List<WcfService1.Service1.Experts> SelectExperts();
+        List<Request> SelectRequest();
         [OperationContract]
-        List<WcfService1.Service1.Request> SelectRequest();
+        List<Users> SelectUsers();
         [OperationContract]
-        List<WcfService1.Service1.Users> SelectUsers();
+        List<Users_Request> SelectUsersRequest();
+        //[OperationContract]
+        //WcfService1.Service1.Users FindByIDUsers(int id);
         [OperationContract]
-        List<WcfService1.Service1.Users_Request> SelectUsersRequest();
+        Request FindByIdRequest(int id);
         [OperationContract]
-        WcfService1.Service1.Users FindByIDUsers(int id);
+        Competition FindByIdCompetition(int id);
         [OperationContract]
-        WcfService1.Service1.Request FindByIdRequest(int id);
+        Experts FindByIdExperts(int id);
+        //[OperationContract]
+        //void UpdateUsers(WcfService1.Service1.Users user);
         [OperationContract]
-        WcfService1.Service1.Competition FindByIdCompetition(int id);
+        void UpdateRequest(Request request);
         [OperationContract]
-        WcfService1.Service1.Experts FindByIdExperts(int id);
+        void UpdateExperts(Experts experts);
         [OperationContract]
-        void UpdateUsers(WcfService1.Service1.Users user);
+        void UpdateEvaluation(Evalulation evaluation);
         [OperationContract]
-        void UpdateRequest(WcfService1.Service1.Request request);
-        [OperationContract]
-        void UpdateExperts(WcfService1.Service1.Experts experts);
-        [OperationContract]
-        void UpdateEvaluation(WcfService1.Service1.Evalulation evaluation);
-        [OperationContract]
-        void UpdateCompetition(WcfService1.Service1.Competition competition);
+        void UpdateCompetition(Competition competition);
         [OperationContract]
         void DeleteCompetition(int id);
         [OperationContract]
-        void DeleteEvaluation(int id_Request,int id_Expert);
+        void DeleteEvaluation(int id_Request, int id_Expert);
         [OperationContract]
         void DeleteExpert(int id);
         [OperationContract]
