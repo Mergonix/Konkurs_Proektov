@@ -65,6 +65,7 @@ namespace WcfService1
             public bool error;
             public string error_message;
             public int id_user;
+            public bool admin;
         }
         public Auth Authorisation(string Login, string Password)
         {

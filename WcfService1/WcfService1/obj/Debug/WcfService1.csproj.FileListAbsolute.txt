@@ -10,3 +10,9 @@ C:\Users\Shumi\Desktop\Учеба\KonkursProektov\Konkurs_Proektov\WcfService1\W
 C:\Users\Shumi\Desktop\Учеба\KonkursProektov\Konkurs_Proektov\WcfService1\WcfService1\obj\Debug\WcfService1.csprojResolveAssemblyReference.cache
 C:\Users\Shumi\Desktop\Учеба\KonkursProektov\Konkurs_Proektov\WcfService1\WcfService1\obj\Debug\WcfService1.dll
 C:\Users\Shumi\Desktop\Учеба\KonkursProektov\Konkurs_Proektov\WcfService1\WcfService1\obj\Debug\WcfService1.pdb
+C:\Users\Ace\Documents\GitHub\WcfService1\WcfService1\bin\WcfService1.dll.config
+C:\Users\Ace\Documents\GitHub\WcfService1\WcfService1\bin\WcfService1.dll
+C:\Users\Ace\Documents\GitHub\WcfService1\WcfService1\bin\WcfService1.pdb
+C:\Users\Ace\Documents\GitHub\WcfService1\WcfService1\obj\Debug\WcfService1.csprojResolveAssemblyReference.cache
+C:\Users\Ace\Documents\GitHub\WcfService1\WcfService1\obj\Debug\WcfService1.dll
+C:\Users\Ace\Documents\GitHub\WcfService1\WcfService1\obj\Debug\WcfService1.pdb
