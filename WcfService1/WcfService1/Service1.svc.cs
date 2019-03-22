@@ -16,49 +16,6 @@ namespace WcfService1
     {
         readonly string connectionString = @"Data Source=DESKTOP-1A81USP\SQLEXPRESS;Initial Catalog=KonkursProektov;Integrated Security=True";
 
-        public class Competition
-        {
-            public int ID_Competition;
-            public string Name;
-            public string Description;
-            public double Prize;
-            public double MinValue;
-            public DateTime ApplicationDeadline;
-        }
-        public class Evalulation
-        {
-            public int Request_ID;
-            public int Expert_ID;
-            public string Name;
-            public double EvalulationNum;
-        }
-        public class Experts
-        {
-            public int ID_Experts;
-            public string FIO;
-        }
-        public class Request
-        {
-            public int ID_Request;
-            public string ProjectName;
-            public int Competition_ID;
-        }
-        public class Users
-        {
-            public int ID_Users;
-            public string Login;
-            public string Password;
-            public string FIO;
-            public string Phone;
-            public string Email;
-            public bool Admin;
-        }
-        public class Users_Request
-        {
-            public int Users_ID;
-            public int Request_ID;
-            public string TeamName;
-        }
 
         public class Auth
         {
@@ -67,47 +24,44 @@ namespace WcfService1
             public int id_user;
             public bool admin;
         }
+        public bool CheckLoginUser(string login)
+        {
+            using (KonkursProektovEntities db = new KonkursProektovEntities())
+            {
+                Users u = db.Users
+                           .Where(s => s.Login == login)
+                           .FirstOrDefault();
+                if (u != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
         public Auth Authorisation(string Login, string Password)
         {
             Auth auth = new Auth();
 
-            if (FindByLoginUsers(Login, Password))
+            if (CheckLoginUser(Login))
             {
-                string sqlExpression = "Authentication";
-                using (SqlConnection connection = new SqlConnection(connectionString))
+
+                using (KonkursProektovEntities db = new KonkursProektovEntities())
                 {
-                    connection.Open();
-                    SqlCommand command = new SqlCommand(sqlExpression, connection)
+                    Users u = db.Users
+                        .Where(s => s.Login == Login)
+                        .Where(s => s.Password == Password)
+                        .FirstOrDefault();
+
+                    if (u != null)
                     {
-                        CommandType = System.Data.CommandType.StoredProcedure
-                    };
 
-                    SqlParameter LoginParam = new SqlParameter
-                    {
-                        ParameterName = "@Login",
-                        Value = Login
-                    };
-                    command.Parameters.Add(LoginParam);
-
-                    SqlParameter PasswordParam = new SqlParameter
-                    {
-                        ParameterName = "@Password",
-                        Value = Password
-                    };
-                    command.Parameters.Add(PasswordParam);
-
-                    var reader = command.ExecuteReader();
-
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            int id = reader.GetInt32(0);
-                            auth.error = false;
-                            auth.error_message = null;
-                            auth.id_user = id;
-
-                        }
+                        auth.error = false;
+                        auth.error_message = null;
+                        auth.id_user = u.ID_Users;
+                        auth.admin = Convert.ToBoolean(u.Admin);
                         return auth;
                     }
                     else
@@ -117,6 +71,7 @@ namespace WcfService1
                         return auth;
                     }
                 }
+
             }
             else
             {
@@ -165,281 +120,67 @@ namespace WcfService1
                 }
             }
         
-            public void AddCompetition(Competition competition)
+            public Competition AddCompetition(Competition competition)
             {
-                string sqlExpression = "AddCompetition";
-
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (KonkursProektovEntities db = new KonkursProektovEntities())
                 {
+                        db.Competition.Add(competition);
+                        db.SaveChanges();
                     
-                    connection.Open();
-                    SqlCommand command1 = new SqlCommand("Select count(*) From Competition where Name=@Name", connection);
-                    command1.Parameters.AddWithValue("@Name", competition.Name);
-                    int Name_Exp = (int)command1.ExecuteScalar();
-                    if (Name_Exp == 0)
-                    {
-                        MoreThanNull = false;
-                        SqlCommand command = new SqlCommand(sqlExpression, connection)
-                        {
-                            CommandType = System.Data.CommandType.StoredProcedure
-                        };
-
-                        SqlParameter CompetitionNameParamet = new SqlParameter
-                        {
-                            ParameterName = "@Name",
-                            Value = competition.Name
-                        };
-                        SqlParameter CompetitionDescParamet = new SqlParameter
-                        {
-                            ParameterName = "@Description",
-                            Value = competition.Description
-                        };
-                        SqlParameter CompetitionPrizeParamet = new SqlParameter
-                        {
-                            ParameterName = "@Prize",
-                            Value = competition.Prize
-                        };
-                        SqlParameter CompetitionMinValueParamet = new SqlParameter
-                        {
-                            ParameterName = "@MinValue",
-                            Value = competition.MinValue
-                        };
-                        SqlParameter CompetitionApplicationDeadlineParamet = new SqlParameter
-                        {
-                            ParameterName = "@ApplicationDeadline",
-                            Value = competition.ApplicationDeadline
-                        };
-                        command.Parameters.Add(CompetitionNameParamet);
-
-                        command.Parameters.Add(CompetitionDescParamet);
-                        command.Parameters.Add(CompetitionPrizeParamet);
-                        command.Parameters.Add(CompetitionMinValueParamet);
-                        command.Parameters.Add(CompetitionApplicationDeadlineParamet);
-
-                        var result = command.ExecuteScalar();
-                        connection.Close();
-                    }
-                    else
-                    {
-                        MoreThanNull = true;
-                        connection.Close();
-                    }
                 }
+                return competition;
             }
 
             public bool MoreThanNull = false;
-            public void AddExpert(Experts Expert)
+            public Experts AddExpert(Experts Expert)
             {
-                string sqlExpression = "AddExpert";
-                
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (KonkursProektovEntities db = new KonkursProektovEntities())
                 {
+                    db.Experts.Add(Expert);
+                    db.SaveChanges();
 
-                    connection.Open();
-                    SqlCommand command1 = new SqlCommand("Select count(*) From Experts where FIO=@FIO", connection);
-                    command1.Parameters.AddWithValue("FIO", Expert.FIO);
-                    int FIO_EXP = (int)command1.ExecuteScalar();
-                    if (FIO_EXP == 0)
-                    {
-                        MoreThanNull = false;
-                        SqlCommand command = new SqlCommand(sqlExpression, connection)
-                        {
-                            CommandType = System.Data.CommandType.StoredProcedure
-                        };
-
-                        SqlParameter ExpertFIOParamet = new SqlParameter
-                        {
-                            ParameterName = "@FIO",
-                            Value = Expert.FIO
-                        };
-
-                        command.Parameters.Add(ExpertFIOParamet);
-
-                        var result = command.ExecuteScalar();
-
-                        connection.Close();
-                    }
-                    else
-                    {
-                        MoreThanNull = true;
-                        connection.Close();
-                    }
                 }
+                return Expert;
             }
-            public void AddEvalulation(Evalulation Evalulation)
+            public Evalulation AddEvalulation(Evalulation Evalulation)
             {
-                string sqlExpression = "AddEvaluation";
-
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (KonkursProektovEntities db = new KonkursProektovEntities())
                 {
-                    connection.Open();
-                    SqlCommand command = new SqlCommand(sqlExpression, connection)
-                    {
-                        CommandType = System.Data.CommandType.StoredProcedure
-                    };
+                    db.Evalulation.Add(Evalulation);
+                    db.SaveChanges();
 
-                    SqlParameter EvalulationRequestParamet = new SqlParameter
-                    {
-                        ParameterName = "@Request_ID",
-                        Value = Evalulation.Request_ID
-                    };
-
-                    command.Parameters.Add(EvalulationRequestParamet);
-                    SqlParameter EvalulationExpertParamet = new SqlParameter
-                    {
-                        ParameterName = "@Expert_ID",
-                        Value = Evalulation.Expert_ID
-                    };
-
-                    command.Parameters.Add(EvalulationExpertParamet);
-                    SqlParameter EvalulationNameParamet = new SqlParameter
-                    {
-                        ParameterName = "@Name",
-                        Value = Evalulation.Name
-                    };
-
-                    command.Parameters.Add(EvalulationNameParamet);
-                    SqlParameter EvalulationEvalulationNumParamet = new SqlParameter
-                    {
-                        ParameterName = "@EvalulationNum",
-                        Value = Evalulation.EvalulationNum
-                    };
-
-                    command.Parameters.Add(EvalulationEvalulationNumParamet);
-
-                    var result = command.ExecuteScalar();
-                    connection.Close();
                 }
+                return Evalulation;
             }
-            public void AddRequest(Request Request)
+            public Request AddRequest(Request Request)
             {
-                string sqlExpression = "AddRequest";
-
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (KonkursProektovEntities db = new KonkursProektovEntities())
                 {
-                    connection.Open();
-                    SqlCommand command1 = new SqlCommand("Select count(*) From Request where ProjectName=@ProjectName", connection);
-                    command1.Parameters.AddWithValue("@ProjectName", Request.ProjectName);
-                    int Req_Exp = (int)command1.ExecuteScalar();
-                    if (Req_Exp == 0)
-                    {
-                        MoreThanNull = false;
-                        SqlCommand command = new SqlCommand(sqlExpression, connection)
-                        {
-                            CommandType = System.Data.CommandType.StoredProcedure
-                        };
+                    db.Request.Add(Request);
+                    db.SaveChanges();
 
-                        SqlParameter RequestExpertParamet = new SqlParameter
-                        {
-                            ParameterName = "@ProjectName",
-                            Value = Request.ProjectName
-                        };
-                        SqlParameter RequestNameParamet = new SqlParameter
-                        {
-                            ParameterName = "@Competition",
-                            Value = Request.Competition_ID
-                        };
-
-                        command.Parameters.Add(RequestExpertParamet);
-                        command.Parameters.Add(RequestNameParamet);
-
-                        var result = command.ExecuteScalar();
-                        connection.Close();
-                    }
-                    else
-                    {
-                        MoreThanNull = true;
-                        connection.Close();
-                    }
                 }
+                return Request;
             }
-        public void AddUsers(Users Users)
+        public Users AddUsers(Users Users)
             {
-                string sqlExpression = "AddUsers";
-
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (KonkursProektovEntities db = new KonkursProektovEntities())
                 {
-                    connection.Open();
-                    SqlCommand command = new SqlCommand(sqlExpression, connection)
-                    {
-                        CommandType = System.Data.CommandType.StoredProcedure
-                    };
-                    SqlParameter UsersLoginParamet = new SqlParameter
-                    {
-                        ParameterName = "@Login",
-                        Value = Users.Login
-                    };
-                    SqlParameter UsersPasswordParamet = new SqlParameter
-                    {
-                        ParameterName = "@Password",
-                        Value = Users.Password
-                    };
-                    SqlParameter UsersFIOParamet = new SqlParameter
-                    {
-                        ParameterName = "@FIO",
-                        Value = Users.FIO
-                    };
-                    SqlParameter UsersPhoneParamet = new SqlParameter
-                    {
-                        ParameterName = "@Phone",
-                        Value = Users.Phone
-                    };
-                    SqlParameter UsersEmailParamet = new SqlParameter
-                    {
-                        ParameterName = "@Email",
-                        Value = Users.Email
-                    };
-                    SqlParameter UsersAdminParamet = new SqlParameter
-                    {
-                        ParameterName = "@Admin",
-                        Value = Users.Admin
-                    };
-                    command.Parameters.Add(UsersLoginParamet);
+                    db.Users.Add(Users);
+                    db.SaveChanges();
 
-                    command.Parameters.Add(UsersPasswordParamet);
-                    command.Parameters.Add(UsersFIOParamet);
-                    command.Parameters.Add(UsersPhoneParamet);
-                    command.Parameters.Add(UsersEmailParamet);
-                    command.Parameters.Add(UsersAdminParamet);
-
-                    var result = command.ExecuteScalar();
-                    connection.Close();
                 }
+                return Users;
             }
-        public void AddUsersRequest(Users_Request Users_Request)
+        public Users_Request AddUsersRequest(Users_Request Users_Request)
         {
-            string sqlExpression = "AddUsersRequest";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (KonkursProektovEntities db = new KonkursProektovEntities())
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection)
-                {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
-                SqlParameter Users_RequestUsersParamet = new SqlParameter
-                {
-                    ParameterName = "@Users_ID",
-                    Value = Users_Request.Users_ID
-                };
-                SqlParameter Users_RequestRequestParamet = new SqlParameter
-                {
-                    ParameterName = "@Request_ID",
-                    Value = Users_Request.Request_ID
-                };
-                SqlParameter TeamNameParamet = new SqlParameter
-                {
-                    ParameterName = "@TeamName",
-                    Value = Users_Request.TeamName
-                };
-                command.Parameters.Add(Users_RequestUsersParamet);
+                db.Users_Request.Add(Users_Request);
+                db.SaveChanges();
 
-                command.Parameters.Add(Users_RequestRequestParamet);
-                command.Parameters.Add(TeamNameParamet);
-
-                var result = command.ExecuteScalar();
-                connection.Close();
             }
+            return Users_Request;
         }
         public List<Competition> SelectCompetition()
         {
@@ -531,375 +272,138 @@ namespace WcfService1
         }
         public void UpdateUsers(Users user)
         {
-            string sqlExpression = "UpdateUsers";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (KonkursProektovEntities db = new KonkursProektovEntities())
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection)
-                {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
+                Users us = db.Users
+                    .Where(o => o.ID_Users == user.ID_Users)
+                    .FirstOrDefault();
+                us.FIO = user.FIO;
+                us.Login = user.Login;
+                us.Password = user.Password;
+                us.Phone = user.Phone;
+                us.Email = user.Email;
 
-                SqlParameter IDParam = new SqlParameter
-                {
-                    ParameterName = "@Id",
-                    Value = user.ID_Users
-                };
-                command.Parameters.Add(IDParam);
-
-                SqlParameter EmailParam = new SqlParameter
-                {
-                    ParameterName = "@Email",
-                    Value = user.Email
-                };
-                command.Parameters.Add(EmailParam);
-
-                SqlParameter PasswordParam = new SqlParameter
-                {
-                    ParameterName = "@Password",
-                    Value = user.Password
-                };
-                command.Parameters.Add(PasswordParam);
-
-                SqlParameter FirstNameParam = new SqlParameter
-                {
-                    ParameterName = "@FIO",
-                    Value = user.FIO
-                };
-                command.Parameters.Add(FirstNameParam);
-
-
-                SqlParameter TelephoneParam = new SqlParameter
-                {
-                    ParameterName = "@Phone",
-                    Value = user.Phone
-                };
-                command.Parameters.Add(TelephoneParam);
-
-
-                SqlParameter Role_IDParam = new SqlParameter
-                {
-                    ParameterName = "@Admin",
-                    Value = user.Admin
-                };
-                command.Parameters.Add(Role_IDParam);
-                SqlParameter Login = new SqlParameter
-                {
-                    ParameterName = "@Login",
-                    Value = user.Login
-                };
-                command.Parameters.Add(Login);
-
-                var result = command.ExecuteScalar();
-                connection.Close();
+                db.SaveChanges();
             }
         }
         public void UpdateRequest(Request request)
         {
-            string sqlExpression = "UpdateRequest";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (KonkursProektovEntities db = new KonkursProektovEntities())
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection)
-                {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
+                Request req = db.Request
+                    .Where(o => o.ID_Request == request.ID_Request)
+                    .FirstOrDefault();
+                req.ProjectName = request.ProjectName;
+                req.Competition_ID = request.Competition_ID;
 
-                SqlParameter IDParam = new SqlParameter
-                {
-                    ParameterName = "@Id",
-                    Value = request.ID_Request
-                };
-                command.Parameters.Add(IDParam);
-
-                SqlParameter ProjectName = new SqlParameter
-                {
-                    ParameterName = "@ProjectName",
-                    Value = request.ProjectName
-                };
-                command.Parameters.Add(ProjectName);
-
-                SqlParameter Competition = new SqlParameter
-                {
-                    ParameterName = "@Competition",
-                    Value = request.Competition_ID
-                };
-                command.Parameters.Add(Competition);
-
-                var result = command.ExecuteScalar();
-                connection.Close();
+                db.SaveChanges();
             }
         }
         public void UpdateExperts(Experts experts)
         {
-            string sqlExpression = "UpdateExpert";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (KonkursProektovEntities db = new KonkursProektovEntities())
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection)
-                {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
+                Experts ex = db.Experts
+                    .Where(o => o.ID_Experts == experts.ID_Experts)
+                    .FirstOrDefault();
+                ex.FIO = experts.FIO;
 
-                SqlParameter IDParam = new SqlParameter
-                {
-                    ParameterName = "@Id",
-                    Value = experts.ID_Experts
-                };
-                command.Parameters.Add(IDParam);
-
-                SqlParameter FIO = new SqlParameter
-                {
-                    ParameterName = "@FIO",
-                    Value = experts.FIO
-                };
-                command.Parameters.Add(FIO);
-
-                
-                var result = command.ExecuteScalar();
-                connection.Close();
+                db.SaveChanges();
             }
         }
         public void UpdateEvaluation(Evalulation evaluation)
         {
-            string sqlExpression = "UpdateEvalulation";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (KonkursProektovEntities db = new KonkursProektovEntities())
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection)
-                {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
+                Evalulation ev = db.Evalulation
+                    .Where(o => o.Expert_ID == evaluation.Expert_ID && o.Request_ID == evaluation.Request_ID)
+                    .FirstOrDefault();
+                ev.Name = evaluation.Name;
+                ev.EvalulationNum = evaluation.EvalulationNum;
 
-                SqlParameter IDParam = new SqlParameter
-                {
-                    ParameterName = "@Id1",
-                    Value = evaluation.Expert_ID
-                };
-                command.Parameters.Add(IDParam);
-
-                SqlParameter IDParamS = new SqlParameter
-                {
-                    ParameterName = "@Id2",
-                    Value = evaluation.Request_ID
-                };
-                command.Parameters.Add(IDParamS);
-
-                SqlParameter Name = new SqlParameter
-                {
-                    ParameterName = "@Name",
-                    Value = evaluation.Name
-                };
-                command.Parameters.Add(Name);
-                SqlParameter Evaluation = new SqlParameter
-                {
-                    ParameterName = "@Evaluation",
-                    Value = evaluation.EvalulationNum
-                };
-                command.Parameters.Add(Evaluation);
-                var result = command.ExecuteScalar();
-                connection.Close();
+                db.SaveChanges();
             }
         }
         public void UpdateCompetition(Competition competition)
         {
-            string sqlExpression = "UpdateCompetition";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (KonkursProektovEntities db = new KonkursProektovEntities())
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection)
-                {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
+               Competition comp = db.Competition
+                    .Where(o => o.ID_Competition == competition.ID_Competition)
+                    .FirstOrDefault();
+               comp.Name = competition.Name;
+               comp.Description = competition.Description;
+               comp.MinValue = competition.MinValue;
+               comp.Prize = competition.Prize;
+               comp.ApplicationDeadline = competition.ApplicationDeadline;
 
-                SqlParameter IDParam = new SqlParameter
-                {
-                    ParameterName = "@Id",
-                    Value = competition.ID_Competition
-                };
-                command.Parameters.Add(IDParam);
-
-                SqlParameter Name = new SqlParameter
-                {
-                    ParameterName = "@Name",
-                    Value = competition.Name
-                };
-                command.Parameters.Add(Name);
-                SqlParameter Description = new SqlParameter
-                {
-                    ParameterName = "@Description",
-                    Value = competition.Description
-                };
-                command.Parameters.Add(Description);
-                SqlParameter Prize = new SqlParameter
-                {
-                    ParameterName = "@Prize",
-                    Value = competition.Prize
-                };
-                command.Parameters.Add(Prize);
-                SqlParameter MinValue = new SqlParameter
-                {
-                    ParameterName = "@MinValue",
-                    Value = competition.MinValue
-                };
-                command.Parameters.Add(MinValue);
-                SqlParameter ApplicationDeadline = new SqlParameter
-                {
-                    ParameterName = "@ApplicationDeadline",
-                    Value = competition.ApplicationDeadline
-                };
-                command.Parameters.Add(ApplicationDeadline);
-                var result = command.ExecuteScalar();
-                connection.Close();
+                db.SaveChanges();
             }
         }
         public void DeleteCompetition(int id)
         {
-            string sqlExpression = "DeleteCompetition";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (KonkursProektovEntities db = new KonkursProektovEntities())
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection)
-                {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
-
-                SqlParameter IDParam = new SqlParameter
-                {
-                    ParameterName = "@ID_Competition",
-                    Value = id
-                };
-                command.Parameters.Add(IDParam);
-                var result = command.ExecuteScalar();
-                connection.Close();
+                Competition comp = db.Competition
+                            .Where(o => o.ID_Competition == id)
+                            .FirstOrDefault();
+                db.Competition.Remove(comp);
+                db.SaveChanges();
             }
         }
         public void DeleteEvaluation(int id_Request,int id_Expert)
         {
-            string sqlExpression = "DeleteEvaluation";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (KonkursProektovEntities db = new KonkursProektovEntities())
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection)
-                {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
-
-                SqlParameter IDParam = new SqlParameter
-                {
-                    ParameterName = "@ID_Request",
-                    Value = id_Request
-                };
-                command.Parameters.Add(IDParam);
-                SqlParameter IDParamS = new SqlParameter
-                {
-                    ParameterName = "@ID_Expert",
-                    Value = id_Expert
-                };
-                command.Parameters.Add(IDParamS);
-                var result = command.ExecuteScalar();
-                connection.Close();
+                Evalulation ev = db.Evalulation
+                            .Where(o => o.Expert_ID == id_Expert && o.Request_ID==id_Request)
+                            .FirstOrDefault();
+                db.Evalulation.Remove(ev);
+                db.SaveChanges();
             }
         }
         public void DeleteExpert(int id)
         {
-            string sqlExpression = "DeleteExpert";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (KonkursProektovEntities db = new KonkursProektovEntities())
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection)
-                {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
-
-                SqlParameter IDParam = new SqlParameter
-                {
-                    ParameterName = "@Id_Expert",
-                    Value = id
-                };
-                command.Parameters.Add(IDParam);
-                var result = command.ExecuteScalar();
-                connection.Close();
+                Experts Ex = db.Experts
+                            .Where(o => o.ID_Experts == id)
+                            .FirstOrDefault();
+                db.Experts.Remove(Ex);
+                db.SaveChanges();
             }
         }
         public void DeleteRequest(int id)
         {
-            string sqlExpression = "DeleteRequest";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (KonkursProektovEntities db = new KonkursProektovEntities())
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection)
-                {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
-
-                SqlParameter IDParam = new SqlParameter
-                {
-                    ParameterName = "@Id_Request",
-                    Value = id
-                };
-                command.Parameters.Add(IDParam);
-                var result = command.ExecuteScalar();
-                connection.Close();
+                Request req = db.Request
+                            .Where(o => o.ID_Request == id)
+                            .FirstOrDefault();
+                db.Request.Remove(req);
+                db.SaveChanges();
             }
         }
         public void DeleteUser(int id)
         {
-            string sqlExpression = "DeleteUser";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (KonkursProektovEntities db = new KonkursProektovEntities())
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection)
-                {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
-
-                SqlParameter IDParam = new SqlParameter
-                {
-                    ParameterName = "@Id_User",
-                    Value = id
-                };
-                command.Parameters.Add(IDParam);
-                var result = command.ExecuteScalar();
-                connection.Close();
+                Users us = db.Users
+                            .Where(o => o.ID_Users == id)
+                            .FirstOrDefault();
+                db.Users.Remove(us);
+                db.SaveChanges();
             }
         }
         public void DeleteUR(int id_User,int id_Request)
         {
-            string sqlExpression = "DeleteUserRequest";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (KonkursProektovEntities db = new KonkursProektovEntities())
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection)
-                {
-                    CommandType = System.Data.CommandType.StoredProcedure
-                };
-
-                SqlParameter IDParam = new SqlParameter
-                {
-                    ParameterName = "@Id_User",
-                    Value = id_User
-                };
-                command.Parameters.Add(IDParam);
-               SqlParameter IDParamS = new SqlParameter
-                {
-                    ParameterName = "@Id_Request",
-                    Value = id_Request
-                };
-                command.Parameters.Add(IDParamS);
-                var result = command.ExecuteScalar();
-                connection.Close();
+                Users_Request ur = db.Users_Request
+                            .Where(o => o.Users_ID == id_User && o.Request_ID==id_Request)
+                            .FirstOrDefault();
+                db.Users_Request.Remove(ur);
+                db.SaveChanges();
             }
         }
         }

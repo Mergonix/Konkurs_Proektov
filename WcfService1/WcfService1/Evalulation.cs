@@ -18,8 +18,5 @@ namespace WcfService1
         public int Expert_ID { get; set; }
         public string Name { get; set; }
         public double EvalulationNum { get; set; }
-    
-        public virtual Experts Experts { get; set; }
-        public virtual Request Request { get; set; }
     }
 }

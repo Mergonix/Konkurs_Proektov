@@ -17,8 +17,5 @@ namespace WcfService1
         public int Users_ID { get; set; }
         public int Request_ID { get; set; }
         public string TeamName { get; set; }
-    
-        public virtual Request Request { get; set; }
-        public virtual Users Users { get; set; }
     }
 }

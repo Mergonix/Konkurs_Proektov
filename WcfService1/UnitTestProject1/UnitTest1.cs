@@ -39,7 +39,7 @@ namespace UnitTestProject1
             var service = new Service1();
             var UsersCountPre = service.SelectUsers().Count;
 
-            Service1.Users Users = new Service1.Users
+            Users Users = new Users
             {
                 Login = "tttt",
                 Password = "tttte",

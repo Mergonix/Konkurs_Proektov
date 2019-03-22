@@ -14,12 +14,6 @@ namespace WcfService1
     
     public partial class Users
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Users()
-        {
-            this.Users_Request = new HashSet<Users_Request>();
-        }
-    
         public int ID_Users { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
@@ -27,8 +21,5 @@ namespace WcfService1
         public string Phone { get; set; }
         public string Email { get; set; }
         public Nullable<bool> Admin { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Users_Request> Users_Request { get; set; }
     }
 }

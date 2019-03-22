@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KonkursProektovModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Competition">
+    <Key>
+      <PropertyRef Name="ID_Competition" />
+    </Key>
+    <Property Name="ID_Competition" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Prize" Type="Double" Nullable="false" />
+    <Property Name="MinValue" Type="Double" Nullable="false" />
+    <Property Name="ApplicationDeadline" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="Evalulation">
+    <Key>
+      <PropertyRef Name="Request_ID" />
+      <PropertyRef Name="Expert_ID" />
+    </Key>
+    <Property Name="Request_ID" Type="Int32" Nullable="false" />
+    <Property Name="Expert_ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EvalulationNum" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Experts">
+    <Key>
+      <PropertyRef Name="ID_Experts" />
+    </Key>
+    <Property Name="ID_Experts" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FIO" Type="String" MaxLength="140" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Request">
+    <Key>
+      <PropertyRef Name="ID_Request" />
+    </Key>
+    <Property Name="ID_Request" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Competition_ID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID_Users" />
+    </Key>
+    <Property Name="ID_Users" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FIO" Type="String" MaxLength="140" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Admin" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Users_Request">
+    <Key>
+      <PropertyRef Name="Users_ID" />
+      <PropertyRef Name="Request_ID" />
+    </Key>
+    <Property Name="Users_ID" Type="Int32" Nullable="false" />
+    <Property Name="Request_ID" Type="Int32" Nullable="false" />
+    <Property Name="TeamName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Request_Competition">
+    <End Role="Competition" Type="Self.Competition" Multiplicity="1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Competition">
+        <PropertyRef Name="ID_Competition" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="Competition_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Evalulation_Experts">
+    <End Role="Experts" Type="Self.Experts" Multiplicity="1" />
+    <End Role="Evalulation" Type="Self.Evalulation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Experts">
+        <PropertyRef Name="ID_Experts" />
+      </Principal>
+      <Dependent Role="Evalulation">
+        <PropertyRef Name="Expert_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Evalulation_Request">
+    <End Role="Request" Type="Self.Request" Multiplicity="1" />
+    <End Role="Evalulation" Type="Self.Evalulation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Request">
+        <PropertyRef Name="ID_Request" />
+      </Principal>
+      <Dependent Role="Evalulation">
+        <PropertyRef Name="Request_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Request_Request">
+    <End Role="Request" Type="Self.Request" Multiplicity="1" />
+    <End Role="Users_Request" Type="Self.Users_Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Request">
+        <PropertyRef Name="ID_Request" />
+      </Principal>
+      <Dependent Role="Users_Request">
+        <PropertyRef Name="Request_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Request_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Users_Request" Type="Self.Users_Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID_Users" />
+      </Principal>
+      <Dependent Role="Users_Request">
+        <PropertyRef Name="Users_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KonkursProektovEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Competition" EntityType="Self.Competition" />
+    <EntitySet Name="Evalulation" EntityType="Self.Evalulation" />
+    <EntitySet Name="Experts" EntityType="Self.Experts" />
+    <EntitySet Name="Request" EntityType="Self.Request" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <EntitySet Name="Users_Request" EntityType="Self.Users_Request" />
+    <AssociationSet Name="FK_Request_Competition" Association="Self.FK_Request_Competition">
+      <End Role="Competition" EntitySet="Competition" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Evalulation_Experts" Association="Self.FK_Evalulation_Experts">
+      <End Role="Experts" EntitySet="Experts" />
+      <End Role="Evalulation" EntitySet="Evalulation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Evalulation_Request" Association="Self.FK_Evalulation_Request">
+      <End Role="Request" EntitySet="Request" />
+      <End Role="Evalulation" EntitySet="Evalulation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Request_Request" Association="Self.FK_Users_Request_Request">
+      <End Role="Request" EntitySet="Request" />
+      <End Role="Users_Request" EntitySet="Users_Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Request_Users" Association="Self.FK_Users_Request_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Users_Request" EntitySet="Users_Request" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

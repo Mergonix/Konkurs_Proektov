@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Shumi\Documents\Visual Studio 2013\Projects\WpfApplication1\WpfApplication1\obj\Debug\
+C:\Users\Shumi\Desktop\Учеба\KonkursProektov\Раб\WpfApplication1\WpfApplication1\obj\Debug\
 WpfApplication1
 none
 false
 DEBUG;TRACE
-C:\Users\Shumi\Documents\Visual Studio 2013\Projects\WpfApplication1\WpfApplication1\App.xaml
-11-1668040146
-
-161321845028
-14-105585256
-AddExpert.xaml;authorization.xaml;CreateCompetition.xaml;CreateEvaluation.xaml;Experts.xaml;Users.xaml;MainWindow.xaml;MenuAdmin.xaml;MenuClient.xaml;Registration.xaml;Request.xaml;
+C:\Users\Shumi\Desktop\Учеба\KonkursProektov\Раб\WpfApplication1\WpfApplication1\App.xaml
+13-597357977
+21750853300
+28-2051239275
+18-1322231182
+AddExpert.xaml;authorization.xaml;CreateCompetition.xaml;CreateEvaluation.xaml;EvaluationsWindow.xaml;Experts.xaml;Results.xaml;Users.xaml;MainWindow.xaml;MenuAdmin.xaml;MenuClient.xaml;Registration.xaml;Request.xaml;
 
 False
 

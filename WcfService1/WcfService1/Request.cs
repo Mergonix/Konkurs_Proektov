@@ -14,21 +14,8 @@ namespace WcfService1
     
     public partial class Request
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Request()
-        {
-            this.Evalulation = new HashSet<Evalulation>();
-            this.Users_Request = new HashSet<Users_Request>();
-        }
-    
         public int ID_Request { get; set; }
         public string ProjectName { get; set; }
         public int Competition_ID { get; set; }
-    
-        public virtual Competition Competition { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Evalulation> Evalulation { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Users_Request> Users_Request { get; set; }
     }
 }

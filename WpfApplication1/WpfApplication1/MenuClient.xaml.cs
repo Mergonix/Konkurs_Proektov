@@ -30,5 +30,19 @@ namespace WpfApplication1
             request.Show();
             this.Close();
         }
+
+        private void Evaluations_Click(object sender, RoutedEventArgs e)
+        {
+            EvaluationsWindow ev = new EvaluationsWindow();
+            ev.Show();
+            this.Close();
+        }
+
+        private void Results_Click(object sender, RoutedEventArgs e)
+        {
+            Results ev = new Results();
+            ev.Show();
+            this.Close();
+        }
     }
 }

@@ -50,7 +50,7 @@ namespace WpfApplication1
         {
             ServiceReference1.Service1Client Service = new ServiceReference1.Service1Client();
                 ServiceReference1.Service1Request Request = new ServiceReference1.Service1Request();
-                Request.ProjectName = ProjectName.Text;
+                Request.ProjectName = ProjectNamee.Text;
                 Request.Competition_ID = ID_Competition;
                 Service.AddRequest(Request);
                 MenuClient Window = new MenuClient();

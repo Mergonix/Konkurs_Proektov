@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Ace\Documents\GitHub\WpfApplication1\WpfApplication1\obj\Debug\
+C:\Users\Ace\Desktop\Новое\WpfApplication1\WpfApplication1\obj\Debug\
 WpfApplication1
 none
 false
 DEBUG;TRACE
-C:\Users\Ace\Documents\GitHub\WpfApplication1\WpfApplication1\App.xaml
-5-1262057189
-
-14605387981
-14-105585256
-authorization.xaml;MainWindow.xaml;MenuAdmin.xaml;MenuClient.xaml;Registration.xaml;
+C:\Users\Ace\Desktop\Новое\WpfApplication1\WpfApplication1\App.xaml
+13-597357977
+21750853300
+32984961706
+182041777868
+AddExpert.xaml;authorization.xaml;CreateCompetition.xaml;CreateEvaluation.xaml;EvaluationsWindow.xaml;Experts.xaml;Results.xaml;Users.xaml;MainWindow.xaml;MenuAdmin.xaml;MenuClient.xaml;Registration.xaml;Request.xaml;
 
 False
 

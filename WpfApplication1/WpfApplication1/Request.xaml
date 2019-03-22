@@ -4,7 +4,7 @@
         Title="Request" Height="300" Width="420" Background="#FF14152B" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Content="Название проекта" HorizontalAlignment="Left" Margin="38,67,0,0" VerticalAlignment="Top" Background="#FF3BA0E8" Foreground="White" FontFamily="Calibri" Width="121" HorizontalContentAlignment="Center"/>
-        <TextBox x:Name="ProjectName" HorizontalAlignment="Left" Height="25" Margin="159,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" Background="#FFE5E5E5" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="ProjectNamee" HorizontalAlignment="Left" Height="25" Margin="159,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" Background="#FFE5E5E5" VerticalContentAlignment="Center"/>
         <Label Content="Соревнование" HorizontalAlignment="Left" Margin="38,97,0,0" VerticalAlignment="Top" Background="#FF3BA0E8" Foreground="White" FontFamily="Calibri" Width="121" HorizontalContentAlignment="Center"/>
         <ComboBox x:Name="combobox" HorizontalAlignment="Left" Margin="159,97,0,0" VerticalAlignment="Top" Width="208" Height="25" SelectionChanged="combobox_SelectionChanged"/>
         <Button x:Name="CreateRequest" Content="Создать" HorizontalAlignment="Left" Margin="119,147,0,0" VerticalAlignment="Top" FontFamily="Calibri" Background="#FF3BA0E8" Foreground="White" BorderBrush="#FF3BA0E8" Width="167" Height="30" Click="CreateRequest_Click" />

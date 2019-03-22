@@ -14,16 +14,7 @@ namespace WcfService1
     
     public partial class Experts
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Experts()
-        {
-            this.Evalulation = new HashSet<Evalulation>();
-        }
-    
         public int ID_Experts { get; set; }
         public string FIO { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Evalulation> Evalulation { get; set; }
     }
 }

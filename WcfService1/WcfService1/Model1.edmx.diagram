@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="20ca470274b843fa9c897ceaa389a142" Name="Diagram1">
+      <Diagram DiagramId="a6ed2dd4720341f9a30af5ad7333977d" Name="Diagram1">
         <EntityTypeShape EntityType="KonkursProektovModel.Competition" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="KonkursProektovModel.Evalulation" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="KonkursProektovModel.Experts" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />

@@ -16,7 +16,7 @@ namespace WcfService1
         [OperationContract]
         WcfService1.Service1.Auth Authorisation(string Login, string Password);
         [OperationContract]
-        Competition AddCompetition(Competition competition);
+        Competition  AddCompetition(Competition competition);
         [OperationContract]
         Experts AddExpert(Experts Expert);
         [OperationContract]
@@ -60,7 +60,7 @@ namespace WcfService1
         [OperationContract]
         void DeleteCompetition(int id);
         [OperationContract]
-        void DeleteEvaluation(int id_Request, int id_Expert);
+        void DeleteEvaluation(int id_Request,int id_Expert);
         [OperationContract]
         void DeleteExpert(int id);
         [OperationContract]

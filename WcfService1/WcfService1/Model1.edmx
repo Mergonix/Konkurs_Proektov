@@ -4,12 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="KonkursProektovModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище KonkursProektovModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Competition">
           <Key>
             <PropertyRef Name="ID_Competition" />
           </Key>
-          <Property Name="ID_Competition" Type="int" Nullable="false" />
+          <Property Name="ID_Competition" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="1000" />
           <Property Name="Prize" Type="float" Nullable="false" />
@@ -30,14 +30,14 @@
           <Key>
             <PropertyRef Name="ID_Experts" />
           </Key>
-          <Property Name="ID_Experts" Type="int" Nullable="false" />
+          <Property Name="ID_Experts" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FIO" Type="nvarchar" MaxLength="140" Nullable="false" />
         </EntityType>
         <EntityType Name="Request">
           <Key>
             <PropertyRef Name="ID_Request" />
           </Key>
-          <Property Name="ID_Request" Type="int" Nullable="false" />
+          <Property Name="ID_Request" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProjectName" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="Competition_ID" Type="int" Nullable="false" />
         </EntityType>
@@ -45,7 +45,7 @@
           <Key>
             <PropertyRef Name="ID_Users" />
           </Key>
-          <Property Name="ID_Users" Type="int" Nullable="false" />
+          <Property Name="ID_Users" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Login" Type="nvarchar" MaxLength="70" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="FIO" Type="nvarchar" MaxLength="140" Nullable="false" />
@@ -122,7 +122,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="KonkursProektovModelStoreContainer">
+        <EntityContainer Name="Хранилище KonkursProektovModelContainer">
           <EntitySet Name="Competition" EntityType="Self.Competition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Evalulation" EntityType="Self.Evalulation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Experts" EntityType="Self.Experts" Schema="dbo" store:Type="Tables" />
@@ -154,18 +154,17 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="KonkursProektovModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="KonkursProektovModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Competition">
           <Key>
             <PropertyRef Name="ID_Competition" />
           </Key>
-          <Property Name="ID_Competition" Type="Int32" Nullable="false" />
+          <Property Name="ID_Competition" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="Prize" Type="Double" Nullable="false" />
           <Property Name="MinValue" Type="Double" Nullable="false" />
           <Property Name="ApplicationDeadline" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Request" Relationship="Self.FK_Request_Competition" FromRole="Competition" ToRole="Request" />
         </EntityType>
         <EntityType Name="Evalulation">
           <Key>
@@ -176,40 +175,33 @@
           <Property Name="Expert_ID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="EvalulationNum" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Experts" Relationship="Self.FK_Evalulation_Experts" FromRole="Evalulation" ToRole="Experts" />
-          <NavigationProperty Name="Request" Relationship="Self.FK_Evalulation_Request" FromRole="Evalulation" ToRole="Request" />
         </EntityType>
         <EntityType Name="Experts">
           <Key>
             <PropertyRef Name="ID_Experts" />
           </Key>
-          <Property Name="ID_Experts" Type="Int32" Nullable="false" />
+          <Property Name="ID_Experts" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FIO" Type="String" MaxLength="140" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Evalulation" Relationship="Self.FK_Evalulation_Experts" FromRole="Experts" ToRole="Evalulation" />
         </EntityType>
         <EntityType Name="Request">
           <Key>
             <PropertyRef Name="ID_Request" />
           </Key>
-          <Property Name="ID_Request" Type="Int32" Nullable="false" />
+          <Property Name="ID_Request" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProjectName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Competition_ID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Competition" Relationship="Self.FK_Request_Competition" FromRole="Request" ToRole="Competition" />
-          <NavigationProperty Name="Evalulation" Relationship="Self.FK_Evalulation_Request" FromRole="Request" ToRole="Evalulation" />
-          <NavigationProperty Name="Users_Request" Relationship="Self.FK_Users_Request_Request" FromRole="Request" ToRole="Users_Request" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="ID_Users" />
           </Key>
-          <Property Name="ID_Users" Type="Int32" Nullable="false" />
+          <Property Name="ID_Users" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Login" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FIO" Type="String" MaxLength="140" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Admin" Type="Boolean" />
-          <NavigationProperty Name="Users_Request" Relationship="Self.FK_Users_Request_Users" FromRole="Users" ToRole="Users_Request" />
         </EntityType>
         <EntityType Name="Users_Request">
           <Key>
@@ -219,8 +211,6 @@
           <Property Name="Users_ID" Type="Int32" Nullable="false" />
           <Property Name="Request_ID" Type="Int32" Nullable="false" />
           <Property Name="TeamName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Request" Relationship="Self.FK_Users_Request_Request" FromRole="Users_Request" ToRole="Request" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Request_Users" FromRole="Users_Request" ToRole="Users" />
         </EntityType>
         <Association Name="FK_Request_Competition">
           <End Role="Competition" Type="Self.Competition" Multiplicity="1" />
@@ -315,7 +305,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="KonkursProektovModelStoreContainer" CdmEntityContainer="KonkursProektovEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище KonkursProektovModelContainer" CdmEntityContainer="KonkursProektovEntities">
           <EntitySetMapping Name="Competition">
             <EntityTypeMapping TypeName="KonkursProektovModel.Competition">
               <MappingFragment StoreEntitySet="Competition">
@@ -394,7 +384,7 @@
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
