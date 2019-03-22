@@ -46,5 +46,12 @@ namespace WpfApplication1
                 MessageBox.Show(Service.Authorisation(Convert.ToString(Login.Text), Convert.ToString(Password.Password)).error_message, "Внимание");
             }
         }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow Window = new MainWindow();
+            Window.Show();
+            this.Close();
+        }
     }
 }

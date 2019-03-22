@@ -23,5 +23,12 @@ namespace WpfApplication1
         {
             InitializeComponent();
         }
+
+        private void CreateRequest_Click(object sender, RoutedEventArgs e)
+        {
+            Request request = new Request();
+            request.Show();
+            this.Close();
+        }
     }
 }
